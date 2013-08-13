@@ -9,10 +9,9 @@
 <body>
     <form id="form1" runat="server">
     <div>
-    
-    <a href="Download?filename=file1.png">file1.png</a><br />
-    <a href="Download?filename=file2.bmp">file2.bmp</a><br />
-    <a href="Download?filename=adt-bundle-windows-x86-20130729.zip">bigfile.zip</a>
+        Number of downloads: <% Response.Write(test("")); %> <br />
+        <a href="Download?filename=file1.png">file1.png</a> <% Response.Write(test("file1.png")); %><br />
+        <a href="Download?filename=file2.bmp">file2.bmp</a> <% Response.Write(test("file2.bmp")); %>
     </div>
     </form>
 </body>

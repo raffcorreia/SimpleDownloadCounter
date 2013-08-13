@@ -11,13 +11,12 @@ namespace SimpleDownloadCounter
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
-        //protected string test()
-        //{
-        //    //clsDownloadHandler dm = new clsDownloadHandler();
-        //    //return dm.CountDownload(Request.ServerVariables);           
-        //}
+        protected string test(String file)
+        {
+            return DownloadCount.CountDownload(file).ToString();
+        }
     }
 }
