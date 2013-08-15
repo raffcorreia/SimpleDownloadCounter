@@ -8,11 +8,19 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-        Number of downloads: <% Response.Write(test("")); %> <br />
-        <a href="Download?filename=file1.png">file1.png</a> <% Response.Write(test("file1.png")); %><br />
-        <a href="Download?filename=file2.bmp">file2.bmp</a> <% Response.Write(test("file2.bmp")); %>
-    </div>
+        <div>
+            Number of downloads: <% Response.Write(CountDownload("").ToString()); %> <br />
+        </div>
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
+            <Columns>
+                <asp:HyperLinkField
+                        DataNavigateUrlFields="File"
+                        DataNavigateUrlFormatString="~\Download.ashx?filename={0}"
+                        DataTextField="File"
+                        HeaderText="Files founded" /> 
+                <asp:BoundField DataField="Count" HeaderText="Download count"/>
+            </Columns>
+        </asp:GridView>
     </form>
 </body>
 </html>
