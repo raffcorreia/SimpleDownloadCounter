@@ -15,7 +15,7 @@
             <Columns>
                 <asp:HyperLinkField
                         DataNavigateUrlFields="File"
-                        DataNavigateUrlFormatString="~\Download?filename={0}"
+                        DataNavigateUrlFormatString="~/Download/{0}"
                         DataTextField="File"
                         HeaderText="Files founded" /> 
                 <asp:BoundField DataField="Count" HeaderText="Download count"/>

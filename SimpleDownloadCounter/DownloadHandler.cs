@@ -10,7 +10,8 @@ namespace SimpleDownloadCounter
 
         public void ProcessRequest(HttpContext context)
         {
-            string fileName = context.Request.QueryString["filename"].ToString();
+            string fileName = context.Request.Url.Segments[context.Request.Url.Segments.Length - 1];
+            context.ApplicationInstance.CompleteRequest();
             string filePath = Configuration.FilesPath;
             FileStream file = null;
 
@@ -26,7 +27,9 @@ namespace SimpleDownloadCounter
 
                 int offset = 0;
                 int readCount;
-                byte[] buffer = new byte[64 * 1024];
+
+                
+                byte[] buffer = new byte[64 * 1024]; //Maximum TCP size
                 while (context.Response.IsClientConnected && offset < file.Length)
                 {
 
@@ -37,23 +40,17 @@ namespace SimpleDownloadCounter
                     offset += readCount;
                 }
 
-                try
+                if (context.Response.IsClientConnected)
                 {
-                    if (context.Response.IsClientConnected)
-                    {
-                        DownloadCount.AddDownload(context.Request.ServerVariables, fileName);
-                    }
+                    DownloadCount.AddDownload(context.Request.ServerVariables, fileName);
                 }
-                catch (Exception)
-                {
-                    //Can't record data
-                }
+
                 file.Dispose();
                 file.Close();
             }
-            else 
+            else
             {
-                context.Response.StatusCode = 404;   
+                context.Response.StatusCode = 404;
             }
             context.ApplicationInstance.CompleteRequest();
         }
