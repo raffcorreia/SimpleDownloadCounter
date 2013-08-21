@@ -14,7 +14,8 @@ namespace SimpleDownloadCounter
         {
             StringBuilder sql = new StringBuilder();
 
-            sql.Append("INSERT INTO tb_downloads  VALUES ( ");
+            sql.Append("INSERT INTO ");
+            sql.Append(Configuration.DataBaseTablesPrefix + "downloads  VALUES ( ");
             sql.Append("NULL, ");
             sql.Append("NOW(), ");
             sql.Append("'" + fileName + "', ");
@@ -35,7 +36,7 @@ namespace SimpleDownloadCounter
             {
                 where = " WHERE file_name = '" + fileName + "'";
             }
-            return DataBase.ExecuteScalarInt("SELECT COUNT(id) FROM tb_downloads" + where);
+            return DataBase.ExecuteScalarInt("SELECT COUNT(id) FROM " + Configuration.DataBaseTablesPrefix + "downloads" + where);
         }
     }
 }

@@ -69,6 +69,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration.cs" />
     <Compile Include="DataBase.cs" />
     <Compile Include="DownloadCount.cs" />
     <Compile Include="DownloadHandler.cs" />

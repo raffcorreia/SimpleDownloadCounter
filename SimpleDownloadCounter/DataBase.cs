@@ -7,7 +7,7 @@ namespace SimpleDownloadCounter
 {
     public static class DataBase
     {
-        private static string connectionString = ConfigurationManager.ConnectionStrings["MySqlConnectionString"].ConnectionString;
+        private static string connectionString = Configuration.ConnectionString;
         private static MySqlCommand cmd;
         private static MySqlConnection con;
 

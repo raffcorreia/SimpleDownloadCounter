@@ -18,7 +18,7 @@ namespace SimpleDownloadCounter
         
         private void loadGrid()
         {
-            DirectoryInfo di = new DirectoryInfo(Request.PhysicalApplicationPath + "\\files\\");
+            DirectoryInfo di = new DirectoryInfo(Configuration.FilesPath);
             FileInfo[] files = di.GetFiles("*.*", SearchOption.TopDirectoryOnly);
 
             List<Item> itemsList = new List<Item>();
